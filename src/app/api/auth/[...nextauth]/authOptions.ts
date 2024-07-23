@@ -2,7 +2,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "@/db";
 import { NextAuthOptions } from 'next-auth'
 
@@ -10,7 +10,6 @@ const prisma = new PrismaClient();
 
 
 export const authOptions: NextAuthOptions = {
-  //adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -47,6 +46,7 @@ export const authOptions: NextAuthOptions = {
       }
     })
   ],
+  adapter: PrismaAdapter(prisma),
   callbacks: {
     async jwt({ token, user, session, trigger}) {
       /*
