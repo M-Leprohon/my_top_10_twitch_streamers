@@ -16,13 +16,7 @@ export default async function randomWord() {
     }
   })
   
-  console.log(word);
-
   return (
-    word['0'] ? (
-      <WordCard originalWord={ word['0'].original_word } translatedWord={ word['0'].translated_word }/>
-    ) : (
-      <div className="whatever">Add words to get started.</div> 
-    )
+    word['0'].original_word
   )
 }

@@ -9,7 +9,6 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import randomWord from "@/components/words/WordRandomizer";
 import React from "react";
 //import { auth, signIn, signOut } from "@/auth";
 import { useSession } from "next-auth/react";

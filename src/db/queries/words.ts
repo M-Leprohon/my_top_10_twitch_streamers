@@ -26,6 +26,7 @@ export async function fetchWordBySlug(slug: string): Promise<Word | null> {
   return word;
 }
 
+/*
 export async function fetchWordByCategory(category: number): Promise<Word[] | null> {
   const session = await getServerSession(authOptions);
 
@@ -37,3 +38,4 @@ export async function fetchWordByCategory(category: number): Promise<Word[] | nu
   })
   return words;
 }
+  */

@@ -28,7 +28,6 @@ export async function createTerm(
   formData: FormData,
 ): Promise<CreateWordFormState> {
   const session = await getServerSession(authOptions);
-  console.log(session?.user?.id);
 
   const result = createTopicSchema.safeParse({
     original_word: formData.get('word'),
@@ -58,7 +57,8 @@ export async function createTerm(
     })
   } catch (err: unknown) {
     if(err instanceof Error) {
-      switch(err.code) {
+      //err.code?
+      switch( err.name ) {
         case 'P2002': 
         const translationCheck = await db.word.findUnique({
           where: {

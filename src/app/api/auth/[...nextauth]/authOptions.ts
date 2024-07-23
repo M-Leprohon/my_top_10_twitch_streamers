@@ -4,12 +4,13 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/db";
+import { NextAuthOptions } from 'next-auth'
 
 const prisma = new PrismaClient();
 
 
-export const authOptions = {
-  adapter: PrismaAdapter(prisma),
+export const authOptions: NextAuthOptions = {
+  //adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -48,11 +49,11 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user, session, trigger}) {
-      console.log("jwt callback", { token, user, session });
-      
+      /*
       if (trigger === 'update && session?.email') {
         token.email = session.email;
       }
+        */
       // on sign-in, pass user id and email to token
       if(user) {
         return{
@@ -66,7 +67,6 @@ export const authOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log("session callback", { token, user, session });
       
       // pass in user id and email to session
       return {
