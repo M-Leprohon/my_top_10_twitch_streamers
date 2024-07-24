@@ -1,5 +1,4 @@
 import { db } from "@/db";
-import { revalidatePath, revalidateTag } from 'next/cache'
 
 export default async function random() {
   const itemCount = await db.word.count();
